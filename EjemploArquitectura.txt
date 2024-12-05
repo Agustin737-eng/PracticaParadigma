@@ -1,0 +1,50 @@
+proyecto/
+│
+├── src/
+│   └── main/
+│       └── java/
+│           └── com/nombreempresa/nombreproyecto/
+│               ├── domain/
+│               │   ├── model/
+│               │   │   ├── Cliente.java
+│               │   │   ├── Producto.java
+│               │   │   └── ...
+│               │   └── exception/
+│               │       ├── ClienteNotFoundException.java
+│               │       └── ...
+│               │
+│               ├── application/
+│               │   ├── service/
+│               │   │   ├── ClienteService.java
+│               │   │   ├── ProductoService.java
+│               │   │   └── ...
+│               │   └── dto/
+│               │       ├── ClienteDTO.java
+│               │       ├── ProductoDTO.java
+│               │       └── ...
+│               │
+│               ├── infrastructure/
+│               │   ├── repository/
+│               │   │   ├── interfaces/
+│               │   │   │   ├── IClienteRepository.java
+│               │   │   │   ├── IProductoRepository.java
+│               │   │   │   └── ...
+│               │   │   └── impl/
+│               │   │       ├── ClienteRepositoryJpaImpl.java
+│               │   │       ├── ProductoRepositoryJpaImpl.java
+│               │   │       └── ...
+│               │   ├── config/
+│               │   │   ├── PersistenceConfig.java
+│               │   │   └── ApplicationConfig.java
+│               │   └── adapter/
+│               │       ├── ClienteJpaAdapter.java
+│               │       └── ...
+│               │
+│               └── presentation/
+│                   ├── controller/
+│                   │   ├── ClienteController.java
+│                   │   ├── ProductoController.java
+│                   │   └── ...
+│                   └── rest/
+│                       ├── ClienteRestController.java
+│                       └── ...

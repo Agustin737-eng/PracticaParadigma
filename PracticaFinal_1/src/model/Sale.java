@@ -26,5 +26,11 @@ public class Sale {
         Lines.add(sl);
     }
     
-    public double getTotal(){}
+    public double getTotal(){
+        double total = 0;
+        for (SaleLine Line : Lines) {
+            total += Line.getSubTotal();
+        }
+        return total;
+    }
 }

@@ -23,5 +23,9 @@ public class SaleLine {
 
     public void setProduct(Product product) {
         this.product = product;
-    }    
+    } 
+    
+    public double getSubTotal(){
+        return this.product.getPrice() * this.quantity;
+    }
 }
