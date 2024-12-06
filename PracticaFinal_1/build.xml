@@ -10,6 +10,9 @@
 <project name="PracticaFinal_1" default="default" basedir=".">
     <description>Builds, tests, and runs the project PracticaFinal_1.</description>
     <import file="nbproject/build-impl.xml"/>
+
+    <property name="javac.source" value="17"/> 
+     <property name="javac.target" value="17"/>
     <!--
 
     There exist several targets which are by default empty and which can be 
