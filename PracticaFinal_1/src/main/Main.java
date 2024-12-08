@@ -1,6 +1,6 @@
 package main;
 
-import repository.DBConnection;
+import infrastruture.config.DBConnection;
 import view.ProductMainView;
 
 public class Main {

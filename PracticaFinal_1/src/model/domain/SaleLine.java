@@ -1,4 +1,4 @@
-package model;
+package model.domain;
 
 public class SaleLine {
     private Product product;

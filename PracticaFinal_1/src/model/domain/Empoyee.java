@@ -1,4 +1,4 @@
-package model;
+package model.domain;
 
 public class Empoyee extends Person{
     private int legajo;

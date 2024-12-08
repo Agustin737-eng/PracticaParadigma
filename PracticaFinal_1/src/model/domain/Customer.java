@@ -1,4 +1,4 @@
-package model;
+package model.domain;
 
 public class Customer extends Person{
     private EnumTaxStatus TaxStatus = EnumTaxStatus.ConsumidorFinal;

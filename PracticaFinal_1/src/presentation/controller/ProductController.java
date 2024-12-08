@@ -1,9 +1,9 @@
-package aplication.controller;
+package presentation.controller;
 
-import aplication.interfaces.IProductMainView;
+import presentation.interfaces.IProductMainView;
 import java.util.ArrayList;
-import model.Product;
-import repository.ProductRepository;
+import model.domain.Product;
+import infrastruture.repository.ProductRepository;
 
 public class ProductController {
     private IProductMainView productMainView;
@@ -15,7 +15,8 @@ public class ProductController {
     public void getAllProduct(){
         ArrayList<Product> products = ProductRepository.getProducts();
         for (Product product : products) {
-            productMainView.listarProducts(products);
+            System.out.println(products);
+            //productMainView.listarProducts(products);
         }
     }
 }

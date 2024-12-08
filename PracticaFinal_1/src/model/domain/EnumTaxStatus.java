@@ -1,4 +1,4 @@
-package model;
+package model.domain;
 
 public enum EnumTaxStatus {
     ResponsableInscripto,

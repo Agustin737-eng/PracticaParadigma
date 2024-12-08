@@ -1,4 +1,4 @@
-package repository;
+package infrastruture.config;
 import java.sql.DriverManager;
 import java.sql.Connection;
 

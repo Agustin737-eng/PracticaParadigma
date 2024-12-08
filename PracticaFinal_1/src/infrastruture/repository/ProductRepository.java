@@ -1,7 +1,8 @@
-package repository;
+package infrastruture.repository;
 
+import infrastruture.config.DBConnection;
 import java.util.ArrayList;
-import model.Product;
+import model.domain.Product;
 import java.sql.Statement;
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -35,6 +36,7 @@ public class ProductRepository{
     
     public static Product initProduct(ResultSet data){
         Product Prod = new Product();
+        
         return Prod;
     }
     
