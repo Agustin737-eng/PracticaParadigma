@@ -7,7 +7,9 @@ package view;
 import presentation.controller.ProductController;
 import presentation.interfaces.IProductMainView;
 import java.util.ArrayList;
+import javax.swing.table.DefaultTableModel;
 import model.domain.Product;
+import presentation.interfaces.IProductRegister;
 
 /**
  *
@@ -23,6 +25,13 @@ public class ProductMainView extends javax.swing.JFrame implements IProductMainV
         productController = new ProductController(this);
         productController.getAllProduct();
     }
+    
+    public ProductMainView(ProductController productController) {
+        initComponents();
+        productController = productController;
+        productController.setProductMainView(this);
+        productController.getAllProduct();
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -35,15 +44,16 @@ public class ProductMainView extends javax.swing.JFrame implements IProductMainV
 
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
+        close = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
                 "cod", "name", "description", "price"
@@ -66,25 +76,61 @@ public class ProductMainView extends javax.swing.JFrame implements IProductMainV
         });
         jScrollPane1.setViewportView(jTable1);
 
+        close.setText("Close");
+
+        jButton1.setText("Agregar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addProduct(evt);
+            }
+        });
+
+        jButton2.setText("Eliminar");
+
+        jButton3.setText("Editar");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 519, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 519, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(close)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jButton3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jButton2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jButton1)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(230, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(40, 40, 40))
+                .addContainerGap(40, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton1)
+                    .addComponent(jButton2)
+                    .addComponent(jButton3))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 343, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(close)
+                .addGap(16, 16, 16))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void addProduct(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addProduct
+        ProductRegister registerProd = new ProductRegister(productController);
+        registerProd.setVisible(true);
+    }//GEN-LAST:event_addProduct
 
     /**
      * @param args the command line arguments
@@ -122,19 +168,20 @@ public class ProductMainView extends javax.swing.JFrame implements IProductMainV
     }
 
     @Override
-    public void updateProduct(int idproduct) {
-    }
-
-    @Override
-    public void deleteProduct(int idproduct) {
-    }
-
-    @Override
     public void listarProducts(ArrayList<Product> products) {
+        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
         
+        for (Product product : products) {
+            Object[] row = {product.getCodigo(), product.getName(), product.getDescription(), product.getPrice()};  
+            model.addRow(row);
+        }
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton close;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables

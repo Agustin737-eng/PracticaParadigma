@@ -1,19 +1,20 @@
 package model.domain;
 
 public class Product {
-    private int codigo;
+    private String codigo;
     private String name;
     private double price;
     private int quantity;
+    private String description;
 
     public Product() {
     }
 
-    public int getCodigo() {
+    public String getCodigo() {
         return codigo;
     }
 
-    public void setCodigo(int codigo) {
+    public void setCodigo(String codigo) {
         this.codigo = codigo;
     }
 
@@ -39,5 +40,13 @@ public class Product {
 
     public void setQuantity(int quantity) {
         this.quantity = quantity;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 }
