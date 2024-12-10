@@ -30,6 +30,14 @@ public class ProductController {
             System.out.println(e.getMessage());
         }
     }
+    public void getProduct(String codigo){
+        try {
+            Product product = ProductRepository.getProduct(codigo);
+            this.productRegister.showDataProduct(product);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+    }
     
     public void createProduct(String codigo, String name, String description, double price, int quantity){
         Product prod = new Product();

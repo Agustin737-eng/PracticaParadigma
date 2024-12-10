@@ -40,6 +40,17 @@ public class ProductRepository{
         return products;
     }
     
+    public static Product getProduct(String codigo) throws SQLException{
+        try {
+            String query = "select * from product where codigo=?";
+            PreparedStatement statemen = DBConnection.getCon().prepareStatement(query);
+            statemen.setString(0, codigo);
+            return initProduct(statemen.executeQuery());
+        } catch (SQLException e) {
+            throw e;
+        }
+    }
+    
     public static void saveProduct(Product product) throws SQLException{
         String prepareStatement = "insert into product(codigo, name, description, price, quantity) values(?,?,?,?,?)";
         try {

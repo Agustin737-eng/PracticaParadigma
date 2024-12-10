@@ -26,6 +26,7 @@ public class ProductRegister extends javax.swing.JFrame implements IProductRegis
         this.productController = productController;
         this.productController.setProductRegister(this);
         initComponents();
+        this.productController.getProduct(codigo);
         CodigoTextField.setEditable(false);
         btnAction.setText("Update");
     }
@@ -55,7 +56,12 @@ public class ProductRegister extends javax.swing.JFrame implements IProductRegis
 
         jLabel2.setText("jLabel2");
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                closeWindow(evt);
+            }
+        });
 
         jLabel1.setText("Codigo");
 
@@ -64,6 +70,12 @@ public class ProductRegister extends javax.swing.JFrame implements IProductRegis
         jLabel4.setText("description");
 
         jLabel5.setText("price");
+
+        PriceTextField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                validationPrice(evt);
+            }
+        });
 
         jLabel6.setText("quantity");
 
@@ -145,6 +157,19 @@ public class ProductRegister extends javax.swing.JFrame implements IProductRegis
                 Integer.parseInt(QuantityTextField.getText())
         );
     }//GEN-LAST:event_btnActionActionPerformed
+
+    private void closeWindow(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_closeWindow
+        this.setVisible(false);
+    }//GEN-LAST:event_closeWindow
+
+    private void validationPrice(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_validationPrice
+        try {
+            Double.parseDouble(PriceTextField.getText());
+        } catch (Exception e) {
+            PriceTextField.setText("");
+            System.out.println(e.getMessage());
+        }
+    }//GEN-LAST:event_validationPrice
     
     
     public static void main(String args[]) {
