@@ -1,5 +1,7 @@
 package view;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import model.domain.Product;
 import presentation.controller.ProductController;
 import presentation.interfaces.IProductRegister;
@@ -87,6 +89,11 @@ public class ProductRegister extends javax.swing.JFrame implements IProductRegis
         });
 
         jButton1.setText("Close");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                closeWindowsRegister(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -149,13 +156,23 @@ public class ProductRegister extends javax.swing.JFrame implements IProductRegis
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnActionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActionActionPerformed
-        productController.createProduct(
-                CodigoTextField.getText(), 
-                NameTextField.getText(), 
-                DescriptionTextField.getText(),
-                Double.parseDouble(PriceTextField.getText()),
-                Integer.parseInt(QuantityTextField.getText())
-        );
+        if(btnAction.getText() == "Create"){
+            productController.createProduct(
+                    CodigoTextField.getText(), 
+                    NameTextField.getText(), 
+                    DescriptionTextField.getText(),
+                    Double.parseDouble(PriceTextField.getText()),
+                    Integer.parseInt(QuantityTextField.getText())
+            );
+        }else{
+            productController.updateProduct(
+                    CodigoTextField.getText(), 
+                    NameTextField.getText(), 
+                    DescriptionTextField.getText(),
+                    Double.parseDouble(PriceTextField.getText()),
+                    Integer.parseInt(QuantityTextField.getText())
+            );
+        }
     }//GEN-LAST:event_btnActionActionPerformed
 
     private void closeWindow(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_closeWindow
@@ -170,6 +187,10 @@ public class ProductRegister extends javax.swing.JFrame implements IProductRegis
             System.out.println(e.getMessage());
         }
     }//GEN-LAST:event_validationPrice
+
+    private void closeWindowsRegister(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_closeWindowsRegister
+        this.setVisible(false);
+    }//GEN-LAST:event_closeWindowsRegister
     
     
     public static void main(String args[]) {
@@ -209,6 +230,11 @@ public class ProductRegister extends javax.swing.JFrame implements IProductRegis
 
     @Override
     public void showDataProduct(Product product) {
+        CodigoTextField.setText(product.getCodigo());
+        NameTextField.setText(product.getName());
+        DescriptionTextField.setText(product.getDescription());
+        PriceTextField.setText(Double.toString(product.getPrice()));
+        QuantityTextField.setText(Integer.toString(product.getQuantity()));
     }
 
     @Override

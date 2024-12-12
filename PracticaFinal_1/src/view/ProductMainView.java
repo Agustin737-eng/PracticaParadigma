@@ -47,7 +47,6 @@ public class ProductMainView extends javax.swing.JFrame implements IProductMainV
         close = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -83,6 +82,11 @@ public class ProductMainView extends javax.swing.JFrame implements IProductMainV
         jScrollPane1.setViewportView(jTable1);
 
         close.setText("Close");
+        close.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                closeActionPerformed(evt);
+            }
+        });
 
         jButton1.setText("Agregar");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -92,8 +96,11 @@ public class ProductMainView extends javax.swing.JFrame implements IProductMainV
         });
 
         jButton2.setText("Eliminar");
-
-        jButton3.setText("Editar");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -108,8 +115,6 @@ public class ProductMainView extends javax.swing.JFrame implements IProductMainV
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jButton3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jButton2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jButton1)))
@@ -121,8 +126,7 @@ public class ProductMainView extends javax.swing.JFrame implements IProductMainV
                 .addContainerGap(40, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
-                    .addComponent(jButton2)
-                    .addComponent(jButton3))
+                    .addComponent(jButton2))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 343, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -142,8 +146,20 @@ public class ProductMainView extends javax.swing.JFrame implements IProductMainV
         if(evt.getClickCount() >= 2){
             String codigo = jTable1.getValueAt(jTable1.getSelectedRow(), 0).toString();
             ProductRegister productUpdate = new ProductRegister(productController, codigo);
+            productUpdate.setVisible(true);
         }
     }//GEN-LAST:event_jTable1MouseClicked
+
+    private void closeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_closeActionPerformed
+        this.setVisible(false);
+    }//GEN-LAST:event_closeActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        if(jTable1.getSelectedRow()>0){
+            String codigo = jTable1.getValueAt(jTable1.getSelectedRow(), 0).toString();
+            
+        }
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -183,6 +199,7 @@ public class ProductMainView extends javax.swing.JFrame implements IProductMainV
     @Override
     public void listarProducts(ArrayList<Product> products) {
         DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+        model.setNumRows(0);
         
         for (Product product : products) {
             Object[] row = {product.getCodigo(), product.getName(), product.getDescription(), product.getPrice()};  
@@ -194,7 +211,6 @@ public class ProductMainView extends javax.swing.JFrame implements IProductMainV
     private javax.swing.JButton close;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables

@@ -44,23 +44,45 @@ public class ProductRepository{
         try {
             String query = "select * from product where codigo=?";
             PreparedStatement statemen = DBConnection.getCon().prepareStatement(query);
-            statemen.setString(0, codigo);
-            return initProduct(statemen.executeQuery());
+            statemen.setString(1, codigo);
+            ResultSet data = statemen.executeQuery();
+            
+            data.next();
+            
+            return initProduct(data);
         } catch (SQLException e) {
             throw e;
         }
     }
-    
+    /*
+        N = new Product
+        U = Update Product
+    */
     public static void saveProduct(Product product) throws SQLException{
         String prepareStatement = "insert into product(codigo, name, description, price, quantity) values(?,?,?,?,?)";
+        PreparedStatement Statement = DBConnection.getCon().prepareStatement(prepareStatement);
+        Statement.setString(1, product.getCodigo());
+        Statement.setString(2, product.getName());
+        Statement.setString(3, product.getDescription());
+        Statement.setDouble(4, product.getPrice());
+        Statement.setInt(5, product.getQuantity());
         try {
-            PreparedStatement Statement = DBConnection.getCon().prepareStatement(prepareStatement);
-            Statement.setString(1, product.getCodigo());
-            Statement.setString(2, product.getName());
-            Statement.setString(3, product.getDescription());
-            Statement.setDouble(4, product.getPrice());
-            Statement.setInt(5, product.getQuantity());
-            
+            Statement.executeUpdate();
+        } catch (SQLException e) {
+            throw e;
+        }
+    }
+    public static void updateProduct(Product product) throws SQLException{
+        String prepareStatement = "update product set name=?, description=?, price=?, quantity=? where codigo=?;";
+        PreparedStatement Statement = DBConnection.getCon().prepareStatement(prepareStatement);
+        
+        Statement.setString(1, product.getName());
+        Statement.setString(2, product.getDescription());
+        Statement.setDouble(3, product.getPrice());
+        Statement.setInt(4, product.getQuantity());
+        Statement.setString(5, product.getCodigo());
+        
+        try {
             Statement.executeUpdate();
         } catch (SQLException e) {
             throw e;

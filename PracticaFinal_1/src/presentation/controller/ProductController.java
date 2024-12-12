@@ -55,7 +55,24 @@ public class ProductController {
             System.out.println(e.getMessage());
         }
     }
-
+    
+    public void updateProduct(String codigo, String name, String description, double price, int quantity){
+        Product prod = new Product();
+        prod.setCodigo(codigo);
+        prod.setName(name);
+        prod.setDescription(description);
+        prod.setPrice(price);
+        prod.setQuantity(quantity);
+        
+        try {
+            ProductRepository.updateProduct(prod);
+            this.getAllProduct();
+            this.productRegister.cleanData();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+    }
+    
     public void setProductMainView(IProductMainView productMainView) {
         this.productMainView = productMainView;
     }
