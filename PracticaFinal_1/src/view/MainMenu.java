@@ -14,6 +14,8 @@ public class MainMenu extends javax.swing.JFrame {
         PrducteMenuItem = new javax.swing.JMenu();
         ManageProductItem = new javax.swing.JMenuItem();
         SaleMenuItem = new javax.swing.JMenu();
+        NewSaleItem = new javax.swing.JMenu();
+        ListSaleItem = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -30,6 +32,13 @@ public class MainMenu extends javax.swing.JFrame {
         jMenuBar2.add(PrducteMenuItem);
 
         SaleMenuItem.setText("Sales");
+
+        NewSaleItem.setText("New Sale");
+        SaleMenuItem.add(NewSaleItem);
+
+        ListSaleItem.setText("List Sale");
+        SaleMenuItem.add(ListSaleItem);
+
         jMenuBar2.add(SaleMenuItem);
 
         setJMenuBar(jMenuBar2);
@@ -90,7 +99,9 @@ public class MainMenu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenu ListSaleItem;
     private javax.swing.JMenuItem ManageProductItem;
+    private javax.swing.JMenu NewSaleItem;
     private javax.swing.JMenu PrducteMenuItem;
     private javax.swing.JMenu SaleMenuItem;
     private javax.swing.JMenuBar jMenuBar2;

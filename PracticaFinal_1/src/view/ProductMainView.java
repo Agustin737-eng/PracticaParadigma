@@ -5,17 +5,16 @@
 package view;
 
 import presentation.controller.ProductController;
-import presentation.interfaces.IProductMainView;
 import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
 import model.domain.Product;
-import presentation.interfaces.IProductRegister;
+import presentation.interfaces.IProductMain;
 
 /**
  *
  * @author Agustin
  */
-public class ProductMainView extends javax.swing.JFrame implements IProductMainView{
+public class ProductMainView extends javax.swing.JFrame implements IProductMain{
     private ProductController productController;
     /**
      * Creates new form ProductMainView
@@ -138,14 +137,14 @@ public class ProductMainView extends javax.swing.JFrame implements IProductMainV
     }// </editor-fold>//GEN-END:initComponents
 
     private void addProduct(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addProduct
-        ProductRegister registerProd = new ProductRegister(productController);
+        ProductRegisterView registerProd = new ProductRegisterView(productController);
         registerProd.setVisible(true);
     }//GEN-LAST:event_addProduct
 
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
         if(evt.getClickCount() >= 2){
             String codigo = jTable1.getValueAt(jTable1.getSelectedRow(), 0).toString();
-            ProductRegister productUpdate = new ProductRegister(productController, codigo);
+            ProductRegisterView productUpdate = new ProductRegisterView(productController, codigo);
             productUpdate.setVisible(true);
         }
     }//GEN-LAST:event_jTable1MouseClicked
@@ -157,7 +156,8 @@ public class ProductMainView extends javax.swing.JFrame implements IProductMainV
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         if(jTable1.getSelectedRow()>0){
             String codigo = jTable1.getValueAt(jTable1.getSelectedRow(), 0).toString();
-            
+            System.out.println("Delete: "+codigo);
+            productController.deleteProduct(codigo);
         }
     }//GEN-LAST:event_jButton2ActionPerformed
 

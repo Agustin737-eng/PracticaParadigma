@@ -3,6 +3,6 @@ package presentation.interfaces;
 import java.util.ArrayList;
 import model.domain.Product;
 
-public interface IProductMainView {
+public interface IProductMain {
     public void listarProducts(ArrayList<Product> products);
 }

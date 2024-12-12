@@ -1,20 +1,20 @@
 package presentation.controller;
 
-import presentation.interfaces.IProductMainView;
 import java.util.ArrayList;
 import model.domain.Product;
 import infrastruture.repository.ProductRepository;
 import presentation.interfaces.IProductRegister;
+import presentation.interfaces.IProductMain;
 
 
 public class ProductController {
-    private IProductMainView productMainView;
+    private IProductMain productMainView;
     private IProductRegister productRegister;
 
     public ProductController() {
     }
 
-    public ProductController(IProductMainView productMainView) {
+    public ProductController(IProductMain productMainView) {
         this.productMainView = productMainView;
     }
     
@@ -30,6 +30,7 @@ public class ProductController {
             System.out.println(e.getMessage());
         }
     }
+    
     public void getProduct(String codigo){
         try {
             Product product = ProductRepository.getProduct(codigo);
@@ -73,7 +74,16 @@ public class ProductController {
         }
     }
     
-    public void setProductMainView(IProductMainView productMainView) {
+    public void deleteProduct(String codigo){
+        try {
+            ProductRepository.deleteProduct(codigo);
+            this.getAllProduct();
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        }
+    }
+    
+    public void setProductMainView(IProductMain productMainView) {
         this.productMainView = productMainView;
     }
 

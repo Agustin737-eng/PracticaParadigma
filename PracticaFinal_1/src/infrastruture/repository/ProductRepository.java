@@ -54,10 +54,7 @@ public class ProductRepository{
             throw e;
         }
     }
-    /*
-        N = new Product
-        U = Update Product
-    */
+    
     public static void saveProduct(Product product) throws SQLException{
         String prepareStatement = "insert into product(codigo, name, description, price, quantity) values(?,?,?,?,?)";
         PreparedStatement Statement = DBConnection.getCon().prepareStatement(prepareStatement);
@@ -84,6 +81,17 @@ public class ProductRepository{
         
         try {
             Statement.executeUpdate();
+        } catch (SQLException e) {
+            throw e;
+        }
+    }
+    
+    public static void deleteProduct(String codigo) throws SQLException{
+        String query = "delete from product where codigo = ?";
+        PreparedStatement statement = DBConnection.getCon().prepareStatement(query);
+        statement.setString(1, codigo);
+        try {
+            statement.executeUpdate();
         } catch (SQLException e) {
             throw e;
         }

@@ -23,6 +23,18 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Sales"/>
           </Properties>
+          <SubComponents>
+            <Menu class="javax.swing.JMenu" name="NewSaleItem">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="New Sale"/>
+              </Properties>
+            </Menu>
+            <Menu class="javax.swing.JMenu" name="ListSaleItem">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="List Sale"/>
+              </Properties>
+            </Menu>
+          </SubComponents>
         </Menu>
       </SubComponents>
     </Menu>

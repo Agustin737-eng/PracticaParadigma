@@ -6,25 +6,25 @@ import model.domain.Product;
 import presentation.controller.ProductController;
 import presentation.interfaces.IProductRegister;
 
-public class ProductRegister extends javax.swing.JFrame implements IProductRegister{
+public class ProductRegisterView extends javax.swing.JFrame implements IProductRegister{
     private ProductController productController;
     /**
      * Creates new form registerProduct
      */
-    public ProductRegister(){
+    public ProductRegisterView(){
         productController = new ProductController(this);
         initComponents();
         btnAction.setText("Create");
     }
     
-    public ProductRegister(ProductController productController) {
+    public ProductRegisterView(ProductController productController) {
         this.productController = productController;
         this.productController.setProductRegister(this);
         initComponents();
         btnAction.setText("Create");
     }
     
-    public ProductRegister(ProductController productController, String codigo) {
+    public ProductRegisterView(ProductController productController, String codigo) {
         this.productController = productController;
         this.productController.setProductRegister(this);
         initComponents();
@@ -207,14 +207,18 @@ public class ProductRegister extends javax.swing.JFrame implements IProductRegis
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ProductRegister.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ProductRegisterView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ProductRegister.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ProductRegisterView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ProductRegister.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ProductRegisterView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ProductRegister.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ProductRegisterView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -223,7 +227,7 @@ public class ProductRegister extends javax.swing.JFrame implements IProductRegis
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ProductRegister().setVisible(true);
+                new ProductRegisterView().setVisible(true);
             }
         });
     }
