@@ -17,7 +17,7 @@ import java.util.logging.Logger;
 
 public class ProductRepository{
     
-
+    //dsnfksdjnfkjsdnfkjsdnfksldnfskjdfnlsdkjnflk
     public static ArrayList<Product> getProducts() throws SQLException{
         ArrayList<Product> products = new ArrayList<>();
         
