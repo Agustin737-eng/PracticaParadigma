@@ -1,6 +1,0 @@
-las relaciones que tengo en la base de datos es necesario que esten iguales en los objetos
-
-Por ejemplo TPV tiene varias líneas de venta.
-Venta en la base de datos al momento de guardarse registra el TPV en el que fue realizada.
-Yo cuando tengo una instancia de venta como puedo conocer el TPV en el que fue realizada. Seria necesario tener una relación que referencie TPV con la venta? 
-
